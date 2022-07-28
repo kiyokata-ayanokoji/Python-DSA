@@ -1,0 +1,19 @@
+def bellman_ford(Wlist,s):
+
+    infinity=max([d for u in Wlist.keys() for (v,d) in Wlist[u] ])*len(Wlist.keys()) +1
+
+    print(infinity)
+    
+    #initialization of vertices and distances
+    (distance,parent)=({},{})
+
+    for i in Wlist.keys():
+        (distance[i])=(infinity)
+    
+
+    distance[s]=0
+
+    for u in Wlist.keys():
+        for v in Wlist.keys():
+            for (v,d) in Wlist[u]:                              #checking the outgoing edges of 'u' vertex
+                distance[v]=min(distance[v],distance[u]+d)
